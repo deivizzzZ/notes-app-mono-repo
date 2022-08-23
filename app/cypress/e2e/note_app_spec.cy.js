@@ -69,7 +69,7 @@ describe('Note App', () => {
     //     cy.get('@theNote')
     //       .contains('make important')
     //       .click()
-        
+
     //     cy.get('@theNote')
     //       .contains('make not important')
     //   })
