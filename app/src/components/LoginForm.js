@@ -1,10 +1,12 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import Togglable from './Togglable'
 
 export default function LoginForm ({ handleLogin }) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+
+  const navigate = useNavigate()
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -15,10 +17,12 @@ export default function LoginForm ({ handleLogin }) {
 
     setUsername('')
     setPassword('')
+
+    navigate('/')
   }
 
   return (
-    <Togglable buttonLabel='Show login'>
+    <>
       <form onSubmit={handleSubmit}>
         <div>
           <input
@@ -40,7 +44,7 @@ export default function LoginForm ({ handleLogin }) {
         </div>
         <button id='form-login-button'>Login</button>
       </form>
-    </Togglable>
+    </>
   )
 }
 

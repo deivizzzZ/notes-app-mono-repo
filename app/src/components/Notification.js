@@ -4,8 +4,6 @@ const Notification = ({ message }) => {
   }
 
   const mystyle = {
-    margin: '5px 0',
-    padding: '5px',
     color: 'red',
     backgroundColor: 'lightgrey',
     border: '2px solid red',
