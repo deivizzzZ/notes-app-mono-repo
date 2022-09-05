@@ -1,16 +1,7 @@
-import { useState, useEffect } from 'react'
 import Note from './Note'
 import NoteForm from './NoteForm'
 
-export default function Notes ({ user, notes, getNotes, createNote, toggle }) {
-  const [loading, setLoading] = useState(false)
-
-  useEffect(() => {
-    setLoading(true)
-    getNotes()
-    setLoading(false)
-  }, [])
-
+export default function Notes ({ user, notes, createNote, toggle }) {
   const addNote = (noteObject) => createNote(noteObject)
 
   const toggleNote = (id, newObject) => toggle(id, newObject)
@@ -18,7 +9,7 @@ export default function Notes ({ user, notes, getNotes, createNote, toggle }) {
   return (
     <>
       <h2>Notes</h2>
-      {loading ? 'Cargando...' : ''}
+      {!notes ? 'Cargando...' : ''}
       {
         user
           ? <NoteForm addNote={addNote} />
