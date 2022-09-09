@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import { Button, Form } from 'react-bootstrap'
 
 const useField = ({ type }) => {
   const [value, setValue] = useState('')
@@ -32,25 +33,23 @@ export default function LoginForm ({ handleLogin }) {
   }
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <input
-            {...username}
-            name='Username'
-            placeholder='Username'
-          />
-        </div>
-        <div>
-          <input
-            {...password}
-            name='Password'
-            placeholder='Password'
-          />
-        </div>
-        <button id='form-login-button'>Login</button>
-      </form>
-    </>
+    <Form onSubmit={handleSubmit}>
+      <Form.Group id='username'>
+        <Form.Control
+          {...username}
+          name='Username'
+          placeholder='Username'
+        />
+      </Form.Group>
+      <Form.Group id='password'>
+        <Form.Control
+          {...password}
+          name='Password'
+          placeholder='Password'
+        />
+      </Form.Group>
+      <Button id='form-login-button' type='submit'>Login</Button>
+    </Form>
   )
 }
 

@@ -7,6 +7,7 @@ import NoteDetail from './components/NoteDetail'
 import Notification from './components/Notification'
 import { useUser } from './hooks/useUser'
 import { useNotes } from './hooks/useNotes'
+import { Nav, Navbar } from 'react-bootstrap'
 
 const Home = ({ user, notification, handleLogout }) => (
   <>
@@ -22,10 +23,6 @@ const App = () => {
   const { notes, createNote, toggle } = useNotes()
   const { user, login, logout } = useUser()
   const [notification, setNotification] = useState(null)
-
-  const inlineStyle = {
-    padding: 5
-  }
 
   const handleLogin = (credentials) => {
     login(credentials)
@@ -44,24 +41,44 @@ const App = () => {
     : null
 
   return (
-    <div>
-      <header>
-        <h1>Notes App</h1>
-        <Link to='/' style={inlineStyle}>Home</Link>
-        <Link to='/notes' style={inlineStyle}>Notes</Link>
-        <Link to='/users' style={inlineStyle}>Users</Link>
-        {
-          user
-            ? <em>{user.name} logged in</em>
-            : <Link to='login' style={inlineStyle}>Login</Link>
-        }
-      </header>
+    <div className='container'>
+      <h1>Notes App</h1>
+      <Navbar collapseOnSelect expand='lg'>
+        <Navbar.Toggle aria-controls='responsive-navbar-nav' />
+        <Navbar.Collapse>
+          <Nav>
+            <Nav.Link as={Link} to='/'>Home</Nav.Link>
+            <Nav.Link as={Link} to='/notes'>Notes</Nav.Link>
+            <Nav.Link as={Link} to='/users'>Users</Nav.Link>
+            {
+              user
+                ? null
+                : <Nav.Link as={Link} to='login'>Login</Nav.Link>
+            }
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
       <Routes>
-        <Route path='/notes/:id' element={<NoteDetail note={note} />} />
-        <Route path='/notes' element={<Notes user={user} notes={notes} createNote={createNote} toggle={toggle} />} />
-        <Route path='/users' element={user ? <Users /> : <Navigate replace to='/login' />} />
-        <Route path='/login' element={<LoginForm handleLogin={handleLogin} />} />
-        <Route path='/' element={<Home user={user} notification={notification} handleLogout={handleLogout} />} />
+        <Route
+          path='/notes/:id'
+          element={<NoteDetail note={note} />}
+        />
+        <Route
+          path='/notes'
+          element={<Notes user={user} notes={notes} createNote={createNote} toggle={toggle} />}
+        />
+        <Route
+          path='/users'
+          element={user ? <Users /> : <Navigate replace to='/login' />}
+        />
+        <Route
+          path='/login'
+          element={<LoginForm handleLogin={handleLogin} />}
+        />
+        <Route
+          path='/'
+          element={<Home user={user} notification={notification} handleLogout={handleLogout} />}
+        />
       </Routes>
       <footer>
         <i>Notes App, Ludvig Amide, 2022</i>

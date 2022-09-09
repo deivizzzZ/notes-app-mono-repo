@@ -1,5 +1,7 @@
 import Note from './Note'
 import NoteForm from './NoteForm'
+// import { Table } from 'react-bootstrap'
+import Table from 'react-bootstrap/Table'
 
 export default function Notes ({ user, notes, createNote, toggle }) {
   const addNote = (noteObject) => createNote(noteObject)
@@ -15,9 +17,19 @@ export default function Notes ({ user, notes, createNote, toggle }) {
           ? <NoteForm addNote={addNote} />
           : 'Log in to create notes and change importance'
       }
-      <ul>
-        {notes.map(note => <Note key={note.id} note={note} user={user} toggleImportance={toggleNote} />)}
-      </ul>
+      <Table striped>
+        <tbody>
+          {notes.map(note =>
+            <tr key={note.id}>
+              <Note
+                note={note}
+                user={user}
+                toggleImportance={toggleNote}
+              />
+            </tr>
+          )}
+        </tbody>
+      </Table>
     </>
   )
 }

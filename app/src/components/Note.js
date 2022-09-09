@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import Button from 'react-bootstrap/Button'
 
 export default function Note ({ note, user, toggleImportance }) {
   const label = note.important ? 'make not important' : 'make important'
@@ -9,9 +10,19 @@ export default function Note ({ note, user, toggleImportance }) {
   }
 
   return (
-    <li className='note'>
-      <Link to={`/notes/${note.id}`}>{note.content}</Link>
-      {user ? <button onClick={() => setImportance(note)}>{label}</button> : null}
-    </li>
+    <>
+      <td className='note'>
+        <Link to={`/notes/${note.id}`}>{note.content}</Link>
+      </td>
+      {
+        user
+          ? (
+            <td>
+              <Button onClick={() => setImportance(note)}>{label}</Button>
+            </td>
+            )
+          : null
+      }
+    </>
   )
 }

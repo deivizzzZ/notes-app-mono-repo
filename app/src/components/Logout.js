@@ -1,9 +1,11 @@
+import Button from 'react-bootstrap/Button'
+
 const Logout = ({ user, handleLogout }) => (
   <>
     <div>
       <em>{user.name} logged in</em>
     </div>
-    <button onClick={handleLogout}>Logout</button>
+    <Button variant='secondary' onClick={handleLogout}>Logout</Button>
   </>
 )
 
