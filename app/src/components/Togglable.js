@@ -1,6 +1,7 @@
 import { useState, forwardRef, useImperativeHandle } from 'react'
 import PropTypes from 'prop-types'
 import Button from 'react-bootstrap/Button'
+// import Button from '@mui/material/Button'
 
 const Togglable = forwardRef(({ children, buttonLabel = 'Mostrar' }, ref) => {
   const [visible, setVisible] = useState(false)
@@ -17,6 +18,8 @@ const Togglable = forwardRef(({ children, buttonLabel = 'Mostrar' }, ref) => {
   })
 
   return (
+  // BOOTSTRAP
+
     <div>
       <div style={hideWhenVisible}>
         <Button variant='info' onClick={toggleVisibility}>{buttonLabel}</Button>
@@ -26,6 +29,18 @@ const Togglable = forwardRef(({ children, buttonLabel = 'Mostrar' }, ref) => {
         <Button variant='danger' onClick={toggleVisibility}>Cancel</Button>
       </div>
     </div>
+
+  // MATERIAL UI
+
+  // <div>
+  //   <div style={hideWhenVisible}>
+  //     <Button color='primary' onClick={toggleVisibility}>{buttonLabel}</Button>
+  //   </div>
+  //   <div style={showWhenVisible}>
+  //     {children}
+  //     <Button variant='outlined' color='error' onClick={toggleVisibility}>Cancel</Button>
+  //   </div>
+  // </div>
   )
 })
 

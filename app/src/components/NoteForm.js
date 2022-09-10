@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import Togglable from './Togglable'
 import { Button, Form } from 'react-bootstrap'
+// import { FormControl, TextField, Button } from '@mui/material'
 
 export default function NoteForm ({ addNote }) {
   const [newNote, setNewNote] = useState('')
@@ -24,6 +25,8 @@ export default function NoteForm ({ addNote }) {
   }
 
   return (
+  // BOOTSTRAP
+
     <Togglable buttonLabel='New Note' ref={togglableRef}>
       <h3>Create a new note</h3>
       <Form onSubmit={handleSubmit}>
@@ -38,5 +41,22 @@ export default function NoteForm ({ addNote }) {
         <Button variant='success' type='submit'>Save</Button>
       </Form>
     </Togglable>
+
+  // MATERIAL UI
+
+  // <Togglable buttonLabel='New Note' ref={togglableRef}>
+  //   <h3>Create a new note</h3>
+  //   <form onSubmit={handleSubmit}>
+  //     <FormControl id='new-note'>
+  //       <TextField
+  //         type='text'
+  //         value={newNote}
+  //         placeholder='Write your note content'
+  //         onChange={handleChange}
+  //       />
+  //     </FormControl>
+  //     <Button variant='contained' color='success' type='submit'>Save</Button>
+  //   </form>
+  // </Togglable>
   )
 }

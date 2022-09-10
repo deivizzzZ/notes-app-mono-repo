@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { Button, Form } from 'react-bootstrap'
+// import { FormControl, TextField, Button } from '@mui/material'
 
 const useField = ({ type }) => {
   const [value, setValue] = useState('')
@@ -33,6 +34,8 @@ export default function LoginForm ({ handleLogin }) {
   }
 
   return (
+  // BOOTSTRAP
+
     <Form onSubmit={handleSubmit}>
       <Form.Group id='username'>
         <Form.Control
@@ -50,6 +53,26 @@ export default function LoginForm ({ handleLogin }) {
       </Form.Group>
       <Button id='form-login-button' type='submit'>Login</Button>
     </Form>
+
+  // MATERIAL UI
+
+  // <form onSubmit={handleSubmit}>
+  //   <FormControl id='username'>
+  //     <TextField
+  //       {...username}
+  //       name='Username'
+  //       placeholder='Username'
+  //     />
+  //   </FormControl>
+  //   <FormControl id='password'>
+  //     <TextField
+  //       {...password}
+  //       name='Password'
+  //       placeholder='Password'
+  //     />
+  //   </FormControl>
+  //   <Button id='form-login-button' type='submit'>Login</Button>
+  // </form>
   )
 }
 
