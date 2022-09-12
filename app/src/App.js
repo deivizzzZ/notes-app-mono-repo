@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Routes, Route, Link, Navigate, useMatch } from 'react-router-dom'
+import { Routes, Route, Navigate, useMatch } from 'react-router-dom'
 import Notes from './components/Notes'
 import LoginForm from './components/LoginForm'
 import Logout from './components/Logout'
@@ -9,6 +9,7 @@ import { useUser } from './hooks/useUser'
 import { useNotes } from './hooks/useNotes'
 import { Nav, Navbar } from 'react-bootstrap'
 // import { Container, AppBar, Toolbar, IconButton, Button } from '@mui/material'
+import { StyledLink } from './components/StyledLink'
 
 const Home = ({ user, notification, handleLogout }) => (
   <>
@@ -50,13 +51,14 @@ const App = () => {
         <Navbar.Toggle aria-controls='responsive-navbar-nav' />
         <Navbar.Collapse>
           <Nav>
-            <Nav.Link as={Link} to='/'>Home</Nav.Link>
-            <Nav.Link as={Link} to='/notes'>Notes</Nav.Link>
-            <Nav.Link as={Link} to='/users'>Users</Nav.Link>
+            {/* <Nav.Link as={StyledLink} to='/'>Home</Nav.Link> */}
+            <StyledLink to='/'>Home</StyledLink>
+            <StyledLink to='/notes'>Notes</StyledLink>
+            <StyledLink to='/users'>Users</StyledLink>
             {
             user
               ? null
-              : <Nav.Link as={Link} to='login'>Login</Nav.Link>
+              : <StyledLink variant='bold' to='login'>Login</StyledLink>
           }
           </Nav>
         </Navbar.Collapse>
@@ -97,13 +99,13 @@ const App = () => {
   //       <Toolbar>
   //         <IconButton edge='start' color='inherit' aria-label='menu' />
   //         <header>
-  //           <Button color='inherit' component={Link} to='/'>Home</Button>
-  //           <Button color='inherit' component={Link} to='/notes'>Notes</Button>
-  //           <Button color='inherit' component={Link} to='/users'>Users</Button>
+  //           <Button color='inherit' component={StyledLink} to='/'>Home</Button>
+  //           <Button color='inherit' component={StyledLink} to='/notes'>Notes</Button>
+  //           <Button color='inherit' component={StyledLink} to='/users'>Users</Button>
   //           {
   //           user
   //             ? null
-  //             : <Button color='inherit' component={Link} to='/login'>Login</Button>
+  //             : <Button color='inherit' component={StyledLink} to='/login'>Login</Button>
   //         }
   //         </header>
   //       </Toolbar>

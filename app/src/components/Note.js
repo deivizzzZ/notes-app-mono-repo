@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import Button from 'react-bootstrap/Button'
-// import { TableCell, Button } from '@mui/material'
+// import { TableCell } from '@mui/material'
+import { Button } from './Button'
 
 export default function Note ({ note, user, toggleImportance }) {
   const label = note.important ? 'make not important' : 'make important'
